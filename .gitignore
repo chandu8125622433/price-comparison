@@ -1,0 +1,70 @@
+# =========================
+# Java / Maven
+# =========================
+target/
+*.class
+
+# Maven wrapper
+.mvn/wrapper/maven-wrapper.jar
+
+# =========================
+# Node.js
+# =========================
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# =========================
+# Environment / Secrets
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Logs
+# =========================
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# IDE
+# =========================
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.iml
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Test / Generated Output
+# =========================
+playwright-report/
+test-results/
+coverage/
+
+# =========================
+# Project Debug / Temporary Files
+# =========================
+_recon/
+app.js.fixed
+null
+playwright-err.txt
+playwright-out.txt
+playwright-output.txt
+test-output.txt
+test-result.txt

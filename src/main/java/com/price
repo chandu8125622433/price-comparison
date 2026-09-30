@@ -1,0 +1,72 @@
+package com.pricecompare.price_comparison.retailer.probe;
+
+import com.pricecompare.price_comparison.retailer.RetailerPrice;
+import com.pricecompare.price_comparison.retailer.RetailerRegistry;
+import com.pricecompare.price_comparison.retailer.provider.VijaySalesRetailerPriceProvider;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.stereotype.Component;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+/**
+ * One-shot, opt-in proof-of-concept probe. Runs only when
+ * {@code retailer.probe.enabled=true} is set, so normal app startup is never
+ * delayed and no background scraping is scheduled.
+ *
+ * <p>The probe fetches a real product page through a real provider and logs the
+ * normalized result. It NEVER writes to the database and NEVER silently inserts
+ * placeholder prices.</p>
+ */
+@Component
+@ConditionalOnProperty(name = "retailer.probe.enabled", havingValue = "true")
+public class RetailerProbeRunner implements ApplicationRunner {
+
+    private static final Logger log = LoggerFactory.getLogger(RetailerProbeRunner.class);
+
+    private final VijaySalesRetailerPriceProvider vijaySalesProvider;
+    private final RetailerRegistry registry;
+
+    public RetailerProbeRunner(VijaySalesRetailerPriceProvider vijaySalesProvider,
+                               RetailerRegistry registry) {
+        this.vijaySalesProvider = vijaySalesProvider;
+        this.registry = registry;
+    }
+
+    @Override
+    public void run(ApplicationArguments args) {
+        String url = System.getProperty("retailer.probe.url");
+        if (url == null || url.isBlank()) {
+            log.warn("retailer.probe.enabled=true but retailer.probe.url is missing; probe skipped.");
+            return;
+        }
+
+        log.info("Retailer probe: registered providers = {}", registry.registeredKeys());
+
+        try {
+            List<RetailerPrice> prices = vijaySalesProvider.fetchPrice(url);
+            if (prices.isEmpty()) {
+                log.warn("Retailer probe: provider returned no prices for {}", url);
+                return;
+            }
+
+            RetailerPrice price = prices.get(0);
+            String printablePrice = price.price() == null ? "null" : price.price().toPlainString();
+            log.info("RETAILER-PROBE-RESULT retailer={} url={} title='{}' price={} fetchedAt={}",
+                    price.retailer(), price.productUrl(), price.productTitle(), printablePrice, price.fetchedAt());
+
+            if (price.price() != null && price.price().compareTo(BigDecimal.ZERO) > 0) {
+                log.info("RETAILER-PROBE-SUCCESS real price extracted for Vijay Sales.");
+            } else {
+                log.error("RETAILER-PROBE-FAILURE invalid extracted price for {}", url);
+            }
+        } catch (Exception ex) {
+            // A retailer fetch must never crash the whole application.
+            log.error("RETAILER-PROBE-FAILURE provider error for {} : {}", url, ex.getMessage(), ex);
+        }
+    }
+}

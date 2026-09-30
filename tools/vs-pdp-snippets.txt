@@ -1,0 +1,10 @@
+--₹86,990 @ 341151--
+xt showproductCard"> <img src="/content/dam/vijaysaleswebsite/search/productImage.png" alt="tv-img" /> <div class="bestSelling__productsText"> <p class="bestSelling__productsText--textOne">Samsung 163 cm (65inches) CU80 Lorem ipsum dolor sit amet.</p> <p class="bestSelling__productsText--price">₹86,990</p> </div> </div> <div class="bestSelling__productsImgText showproductCard"> <img src="/content/dam/vija
+
+--EMI @ 413221--
+ 23% off </p> </div> <!-- </sly> --> <p class="product__price--extra-label">(Incl. of all taxes)</p> </div> <div class="product__price--emi emi--empty d-none"></div> <div class="product__price--emi emi--text d-none"> <p class="product__price--emi-text">EMI starting from <span></span></p> <a class="product__price--emi-options">See EMI options</a> </div> <div class="product__price--loyalty d-none"> <img src="/c
+
+--ATTRS--
+<input type="checkbox" data-compare-sku="238476" class="form-check-input compare-checkbox-input" data-compare-price="16090" data-compare-img="https://vsprod.vijaysales.com/media/catalog/product/2/3/238476_2__1.jpg?optimi
+<p class="product__price--price" data-format-amount="true" data-final-price="16090">
+<p class="product__price--price" data-format-amount="true" data-final-price="16090">

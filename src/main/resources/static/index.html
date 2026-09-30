@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PriceComparison — Find the lowest price</title>
+    <link rel="stylesheet" href="styles.css?v=10">
+</head>
+<body>
+<header class="site-header">
+    <div class="container header-inner">
+        <a class="brand" href="/" id="brand-link">
+            <span class="brand-mark">&#8377;</span> PriceComparison
+        </a>
+        <p class="tagline">Compare real retailer prices in one place</p>
+    </div>
+</header>
+
+<main class="container">
+
+    <!-- Search section -->
+    <section id="search-section" class="search-section">
+        <form id="search-form" class="search-bar" autocomplete="off">
+            <div class="search-input-wrap">
+                <input type="text" id="search-input" name="q"
+                       placeholder="Search a product, e.g. Samsung TV, iPhone, LG 32..."
+                       aria-label="Product search" />
+                <div id="search-autocomplete" class="autocomplete-dropdown" hidden></div>
+            </div>
+            <button type="submit" id="search-button" class="btn btn-primary">Search</button>
+        </form>
+
+        <div id="search-status" class="status-area" hidden></div>
+        <div id="search-results" class="results-grid" aria-live="polite"></div>
+    </section>
+
+    <!-- Comparison section -->
+    <section id="compare-section" class="compare-section" hidden>
+        <button id="back-button" type="button" class="btn btn-link">&larr; Back to search</button>
+
+        <div id="product-header" class="product-header"></div>
+
+        <div class="toolbar">
+            <button id="refresh-btn" type="button" class="btn btn-secondary">
+                <span class="btn-label">Refresh Prices</span>
+            </button>
+            <button id="compare-retailers-btn" type="button" class="btn btn-secondary">
+                <span class="btn-label">Compare Retailers</span>
+            </button>
+            <button id="discover-btn" type="button" class="btn btn-secondary">
+                <span class="btn-label">Discover Retailers</span>
+            </button>
+            <span id="refresh-status" class="refresh-status" role="status"></span>
+        </div>
+
+        <div id="discover-section" class="discover-section" hidden>
+            <h3 class="discover-title">Retailer candidates</h3>
+            <div id="discover-status" class="status-area" hidden></div>
+            <div id="candidate-list" class="candidate-list"></div>
+        </div>
+
+        <div id="multi-retailer-section" class="multi-retailer-section" hidden>
+            <h3 class="multi-retailer-title">Multi-Retailer Comparison</h3>
+            <div id="multi-retailer-status" class="status-area" hidden></div>
+            <div id="multi-retailer-results" class="multi-retailer-results"></div>
+        </div>
+
+        <div id="refresh-summary" class="refresh-summary" hidden></div>
+        <div id="comparison-status" class="status-area" aria-live="polite"></div>
+        <div id="price-list" class="price-list"></div>
+    </section>
+
+    <!-- Category listing section -->
+    <section id="category-section" class="category-section" hidden>
+        <button id="cat-back-button" type="button" class="btn btn-link">&larr; Back to search</button>
+
+        <div id="category-header" class="category-header"></div>
+
+        <div class="category-body">
+            <aside id="category-filters" class="category-filters"></aside>
+            <div class="category-main">
+                <div id="category-status" class="status-area" hidden></div>
+                <div id="category-results" class="category-grid" aria-live="polite"></div>
+                <div id="category-pagination" class="category-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product detail section -->
+    <section id="product-detail-section" class="product-detail-section" hidden>
+        <button id="detail-back-button" type="button" class="btn btn-link">&larr; Back to search</button>
+
+        <div id="product-detail" class="product-detail">
+            <div id="detail-image" class="detail-image"></div>
+            <div class="detail-body">
+                <div id="detail-header" class="detail-header"></div>
+                <div id="detail-meta" class="detail-meta"></div>
+                <div id="detail-pricing" class="detail-pricing"></div>
+                <div id="detail-actions" class="detail-actions"></div>
+            </div>
+        </div>
+
+        <div id="detail-prices-section" class="detail-prices-section">
+            <h3>Compare Prices</h3>
+            <div id="detail-prices-status" class="status-area" hidden></div>
+            <div id="detail-price-list" class="price-list"></div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <small>Only verified retailer prices are shown as live prices and may be outdated.
+            Always confirm the final price on the retailer's site.</small>
+    </div>
+</footer>
+
+    <script src="app.js?v=7"></script>
+</body>
+</html>

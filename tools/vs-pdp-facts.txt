@@ -1,0 +1,6 @@
+URL=https://www.vijaysales.com/p/238476/lg-80-cm-32-inch-hd-ai-smart-webos-led-tv-hdr10-pro-a5-gen6-ai-processor-2-0-channel-ai-sound-32lr605b6lc
+STATUS=200
+BYTES=844948
+TITLE=Buy LG 80 cm (32 Inch) HD AI Smart WebOS23 LED TV online - HDR10 Pro, 5 Gen6 AI Processor, 2.0 Channel, AI Sound, 32LR605B6LC | Vijay Sales
+LD_BLOCKS=0
+PRICE_HITS=["₹86,990","₹86,990","₹16090","₹20990","₹16090","₹20990"]
